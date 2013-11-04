@@ -15,9 +15,7 @@ namespace Huffman.Tree
 
         private QueueItem MergeQueueItem(QueueItem item1, QueueItem item2)
         {
-            TreeNode treeNode = new TreeNode();
-            treeNode.Left = item1.TreeNode;
-            treeNode.Rigth = item2.TreeNode;
+            TreeNode treeNode = new TreeNode(item1.TreeNode, item2.TreeNode);
 
             QueueItem queuItem = new QueueItem(treeNode, item1.Priority + item2.Priority);
             return queuItem;

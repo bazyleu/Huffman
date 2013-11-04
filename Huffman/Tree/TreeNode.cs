@@ -4,7 +4,11 @@ namespace Huffman.Tree
 {
     class TreeNode : ITreeNode
     {
-        public TreeNode() { }
+        public TreeNode(ITreeNode left, ITreeNode rigth) 
+        {
+            this.Left = left;
+            this.Rigth = rigth;
+        }
 
         public TreeNode(Byte value)
         {
