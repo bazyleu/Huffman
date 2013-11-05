@@ -1,7 +1,7 @@
 ﻿
 namespace Huffman.Tree
 {
-    class TreeBuilder
+    public class TreeBuilder
     {
         public ITreeNode BuildTree(TreeBuilderQueue queue)
         {

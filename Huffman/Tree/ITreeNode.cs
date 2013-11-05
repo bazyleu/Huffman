@@ -2,10 +2,10 @@
 
 namespace Huffman.Tree
 {
-    interface ITreeNode
+    public interface ITreeNode
     {
         ITreeNode Left { get; set; }
         ITreeNode Rigth { get; set; }
-        Byte Value { get; set; }
+        byte? Value { get; set; }
     }
 }

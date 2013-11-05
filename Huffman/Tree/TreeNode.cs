@@ -17,6 +17,6 @@ namespace Huffman.Tree
 
         public ITreeNode Left { get; set; }
         public ITreeNode Rigth { get; set; }
-        public Byte Value { get; set; }
+        public byte? Value { get; set; }
     }
 }
