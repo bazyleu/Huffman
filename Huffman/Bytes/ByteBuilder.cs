@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Huffman
+namespace Huffman.Bytes
 {
     class ByteBuilder
     {
@@ -35,10 +35,29 @@ namespace Huffman
         /// <param name="b"></param>
         /// <param name="position"></param>
         /// <returns> rest bits</returns>
-        private BitArray AppendBitToByte(BitArray bitArray, byte b, int position)
+        private AppendBitResult AppendBitToByte(BitArray bitArray, byte b, int position)
         {
+            int bitArrayPointer = 0; 
+            while (position < 9 && bitArrayPointer <bitArray.Length)
+            {
+                SetBit(ref b, position, bitArray[bitArrayPointer] == true);
+                position++;
+                bitArrayPointer++;
+            }
 
-            return bitArray;
+            int resstLength = bitArray.Length - bitArrayPointer -1;
+            BitArray restBits;
+            if(resstLength>0)
+            {
+               //copy
+            }
+
+            AppendBitResult result = new AppendBitResult()
+            {
+   
+            };
+            
+            return result;
         }
 
 

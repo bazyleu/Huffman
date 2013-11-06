@@ -25,7 +25,7 @@ namespace Huffman
             byte b = byte.MinValue;
             do 
             {
-                dictionary.Add(b, 0);
+              dictionary.Add(b, 0);
             } while(b++ < byte.MaxValue);
             
             return dictionary;

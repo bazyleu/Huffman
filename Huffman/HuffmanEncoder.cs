@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Huffman.Tree;
+using Huffman.Bytes;
 
 namespace Huffman
 {

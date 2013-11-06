@@ -40,8 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitTable.cs" />
-    <Compile Include="ByteBuilder.cs" />
+    <Compile Include="Bytes\AppendBitResult.cs" />
+    <Compile Include="Bytes\ByteBuilder.cs" />
     <Compile Include="BytesCalculator.cs" />
+    <Compile Include="Extensions\BitArrayExtensions.cs" />
     <Compile Include="HuffmanEncoder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tree\QueueItem.cs" />
