@@ -43,7 +43,7 @@ namespace Huffman
                 {
                     return result;
                 }
-                bits.Remove(bits[bits.Count-1]);
+                bits.RemoveAt(bits.Count-1);
             }
 
             if (tree.Rigth != null)
@@ -54,7 +54,7 @@ namespace Huffman
                 {
                     return result;
                 }
-                bits.Remove(bits[bits.Count - 1]);
+                bits.RemoveAt(bits.Count - 1);
             }
 
             return null;
