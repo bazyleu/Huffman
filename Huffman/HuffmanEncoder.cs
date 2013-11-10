@@ -1,12 +1,8 @@
-﻿using System;
+﻿using Huffman.Bytes;
+using Huffman.Tree;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Huffman.Tree;
-using Huffman.Bytes;
 
 namespace Huffman
 {
@@ -24,7 +20,19 @@ namespace Huffman
         private byte[] Encode(byte[] bytes, Dictionary<byte, BitArray> bitTable)
         {
             ByteBuilder byteBuilder = new ByteBuilder();
-            return null;
+            List<byte> outputBytes = new List<byte>(bytes.Count());
+            foreach (var inputByte in bytes)
+            {
+                byteBuilder.Append(bitTable[inputByte]);
+                while (byteBuilder.IsByteRedy())
+                {
+                    outputBytes.Add(byteBuilder.GetByte());
+                }
+            }
+
+            outputBytes.AddRange(byteBuilder.GetAllBytes());
+
+            return outputBytes.ToArray();
         }
     }
 }

@@ -1,61 +1,85 @@
-﻿using System;
+﻿using Huffman.Extensions;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Huffman.Bytes
 {
     class ByteBuilder
     {
-        private readonly List<byte> Bytes;
+        private readonly List<byte> bytes;
         private long bitFilled;
 
         public ByteBuilder()
         {
-            Bytes = new List<byte>();
+            bytes = new List<byte>();
             bitFilled = 0;
         }
 
  
         public void Append(BitArray bitArray)
         {
-            if (bitFilled % 8 == 0)
+            while (bitArray != null && bitArray.Length > 0)
             {
-                
-                //Bytes.Add(0)
+                if (bitFilled % 8 == 0)
+                {
+                    bytes.Add(new byte());
+                }
+
+                byte b = bytes[bytes.Count - 1];
+                var result = AppendBitToByte(bitArray, ref b, (int)bitFilled % 8);
+                bytes[bytes.Count - 1] = b;
+                bitFilled += result.RestPositionIntoBit - (bitFilled % 8);
+                bitArray = result.RestBits;
             }
+        }
+
+
+        public bool IsByteRedy()
+        {
+            return bitFilled > 8;
+        }
+
+        public byte GetByte()
+        {
+            byte b = bytes[0];
+            bytes.RemoveAt(0);
+            bitFilled -= 8;
+            return b;
+        }
+
+        public IEnumerable<byte> GetAllBytes()
+        {
+            bitFilled = 0;
+            return bytes;
         }
         
         /// <summary>
-        /// 
+        /// Convert BitArray into Byte
         /// </summary>
-        /// <param name="bitArray"></param>
-        /// <param name="b"></param>
-        /// <param name="position"></param>
-        /// <returns> rest bits</returns>
-        private AppendBitResult AppendBitToByte(BitArray bitArray, byte b, int position)
+        /// <param name="bitArray">Bit Array which converted Byte</param>
+        /// <param name="b">Byte converted by BitArray</param>
+        /// <param name="position">position for free bits in byte</param>
+        /// <returns> rest bits, rest bits in byte</returns>
+        private AppendBitResult AppendBitToByte(BitArray bitArray, ref byte b, int position)
         {
             int bitArrayPointer = 0; 
-            while (position < 9 && bitArrayPointer <bitArray.Length)
+            while (position < 8 && bitArrayPointer < bitArray.Length)
             {
-                SetBit(ref b, position, bitArray[bitArrayPointer] == true);
+                SetBit(ref b, position, bitArray[bitArrayPointer]);
                 position++;
                 bitArrayPointer++;
             }
 
-            int resstLength = bitArray.Length - bitArrayPointer -1;
-            BitArray restBits;
-            if(resstLength>0)
-            {
-               //copy
-            }
+            AppendBitResult result = new AppendBitResult();
 
-            AppendBitResult result = new AppendBitResult()
+            if (bitArrayPointer < bitArray.Length)
             {
-   
-            };
+                result.RestBits = bitArray.CopyToNew(bitArrayPointer);
+            }
+            if (position < 8)
+            {
+                result.RestPositionIntoBit = position;
+            }
             
             return result;
         }
