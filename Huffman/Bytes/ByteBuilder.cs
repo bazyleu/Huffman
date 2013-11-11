@@ -49,7 +49,6 @@ namespace Huffman.Bytes
 
         public IEnumerable<byte> GetAllBytes()
         {
-            bitFilled = 0;
             return bytes;
         }
         

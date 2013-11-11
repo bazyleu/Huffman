@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+using Huffman.Bytes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Huffman.Tree;

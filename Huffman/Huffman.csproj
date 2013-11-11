@@ -42,7 +42,9 @@
     <Compile Include="BitTable.cs" />
     <Compile Include="Bytes\AppendBitResult.cs" />
     <Compile Include="Bytes\ByteBuilder.cs" />
-    <Compile Include="BytesCalculator.cs" />
+    <Compile Include="Bytes\BytesCalculator.cs" />
+    <Compile Include="Bytes\DictionarySerializer.cs" />
+    <Compile Include="Bytes\DictionarySerializerResult.cs" />
     <Compile Include="Extensions\BitArrayExtensions.cs" />
     <Compile Include="HuffmanEncoder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

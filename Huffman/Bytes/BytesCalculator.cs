@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Huffman
+namespace Huffman.Bytes
 {
     public static class BytesCalculator
     {
