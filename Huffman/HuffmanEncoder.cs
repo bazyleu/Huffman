@@ -1,4 +1,6 @@
-﻿using Huffman.Bytes;
+﻿using System;
+using Huffman.Bytes;
+using Huffman.Extensions;
 using Huffman.Tree;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,18 +8,38 @@ using System.Linq;
 
 namespace Huffman
 {
-    public class HuffmanEncoder
+    public static class HuffmanEncoder
     {
-        public byte[] Encode(byte[] bytes)
+        public static byte[] Encode(byte[] bytes)
         {
-            return Encode(bytes, 
-                new BitTable().BuildTable(
-                            new TreeBuilder().BuildTree(
-                                   new TreeBuilderQueue(BytesCalculator.Calculate(bytes)))));
+            var dictionary = BytesCalculator.Calculate(bytes);
+
+            var header = DictionarySerializer.Serialize(dictionary);
+            var body = Encode(bytes,
+                BitTable.BuildTable(TreeBuilder.BuildTree(new TreeBuilderQueue(dictionary))));
+
+            return Merage(header, body);
         }
 
+        public static byte[] Decode(byte[] bytes)
+        {
+            var result = DictionarySerializer.Deserialize(bytes);
 
-        private byte[] Encode(byte[] bytes, Dictionary<byte, BitArray> bitTable)
+            return Decode(bytes, 
+                result.SizeOfBytes, 
+                TreeBuilder.BuildTree(new TreeBuilderQueue(result.Dictionary)));
+        }
+
+        private static byte[] Merage(byte[] header, byte[] body)
+        {
+            byte[] allBytes = new byte[header.Length + body.Length];
+            Array.Copy(header, 0, allBytes, 0, header.Length);
+            Array.Copy(body, 0, allBytes, header.Length, body.Length);
+
+            return allBytes;
+        }
+
+        private static byte[] Encode(byte[] bytes, Dictionary<byte, BitArray> bitTable)
         {
             ByteBuilder byteBuilder = new ByteBuilder();
             List<byte> outputBytes = new List<byte>(bytes.Count());
@@ -32,6 +54,24 @@ namespace Huffman
 
             outputBytes.AddRange(byteBuilder.GetAllBytes());
 
+            return outputBytes.ToArray();
+        }
+
+        private static byte[] Decode(byte[] bytes, int startIndex, ITreeNode tree)
+        {
+            List<byte> outputBytes = new List<byte>(bytes.Length);
+            TreeSearcher searcher = new TreeSearcher(tree);
+            for (int i = startIndex; i < bytes.Length; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    byte? b = searcher.Move(bytes[i].GetBit(j));
+                    if (b.HasValue)
+                    {
+                        outputBytes.Add(b.Value);
+                    }
+                }
+            }
             return outputBytes.ToArray();
         }
     }

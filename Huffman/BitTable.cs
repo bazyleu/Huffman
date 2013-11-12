@@ -5,9 +5,9 @@ using Huffman.Tree;
 
 namespace Huffman
 {
-    public class BitTable
+    public static class BitTable
     {
-        public Dictionary<byte, BitArray> BuildTable(ITreeNode node)
+        public static Dictionary<byte, BitArray> BuildTable(ITreeNode node)
         {
             Dictionary<byte, BitArray> dictionary = new Dictionary<byte, BitArray>();
 
@@ -20,14 +20,14 @@ namespace Huffman
             return dictionary;
         }
 
-        private List<bool> GenerateBits(ITreeNode tree, byte value)
+        private static List<bool> GenerateBits(ITreeNode tree, byte value)
         {
             List<bool> bits = new List<bool>();
 
             return Find(tree, value, bits);
         }
 
-        private List<bool> Find(ITreeNode tree, byte value, List<bool> bits)
+        private static List<bool> Find(ITreeNode tree, byte value, List<bool> bits)
         {
 
             if (value == tree.Value)

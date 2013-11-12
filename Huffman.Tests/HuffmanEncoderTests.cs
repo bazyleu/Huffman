@@ -1,7 +1,7 @@
 ﻿using System.Collections;
+using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using Huffman;
 
 namespace Huffman.Tests
 {
@@ -13,10 +13,12 @@ namespace Huffman.Tests
         {
             const string testString = "there are rrrr he he!";
             var bytes = BitArrayUtilites.GetBytes(testString);
-            HuffmanEncoder encoder = new HuffmanEncoder();
-            var result = encoder.Encode(bytes);
-            BitArray bitArray = new BitArray(result);
-            string resultStr = BitArrayUtilites.GetString(bitArray);
+            string startStr = Encoding.Unicode.GetString(bytes);
+            var encode = HuffmanEncoder.Encode(bytes);
+            var decode = HuffmanEncoder.Decode(encode);
+            string decodeStr = Encoding.Unicode.GetString(decode);
+
+            Assert.IsTrue(startStr == decodeStr);
         }
     }
 }

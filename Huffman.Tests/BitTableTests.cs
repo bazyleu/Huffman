@@ -1,11 +1,8 @@
-﻿using System;
-using System.Text;
-using System.Collections;
-using System.Collections.Generic;
-using Huffman.Bytes;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+﻿using Huffman.Bytes;
 using Huffman.Tree;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
 
 namespace Huffman.Tests
 {
@@ -16,11 +13,9 @@ namespace Huffman.Tests
         public void Test1()
         {
             const string testString = "there are rrrr he he!";
-            BitTable bitTable = new BitTable();
-            TreeBuilder treeBuilder = new TreeBuilder();
             var bytes = BitArrayUtilites.GetBytes(testString);
-            var tree = treeBuilder.BuildTree(new TreeBuilderQueue(BytesCalculator.Calculate(bytes)));
-            var table = bitTable.BuildTable(tree);
+            var tree = TreeBuilder.BuildTree(new TreeBuilderQueue(BytesCalculator.Calculate(bytes)));
+            var table = BitTable.BuildTable(tree);
 
             Dictionary<Byte, string> dicDebug = new Dictionary<Byte, string>();
             foreach (var item in table)

@@ -1,9 +1,9 @@
 ﻿
 namespace Huffman.Tree
 {
-    public class TreeBuilder
+    public static class TreeBuilder
     {
-        public ITreeNode BuildTree(TreeBuilderQueue queue)
+        public static ITreeNode BuildTree(TreeBuilderQueue queue)
         {
             while (queue.Count > 1)
             {
@@ -13,7 +13,7 @@ namespace Huffman.Tree
             return queue.Pull().TreeNode;
         }
 
-        private QueueItem MergeQueueItem(QueueItem item1, QueueItem item2)
+        private static QueueItem MergeQueueItem(QueueItem item1, QueueItem item2)
         {
             TreeNode treeNode = new TreeNode(item1.TreeNode, item2.TreeNode);
 
