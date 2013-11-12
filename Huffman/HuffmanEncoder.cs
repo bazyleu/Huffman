@@ -10,6 +10,11 @@ namespace Huffman
 {
     public static class HuffmanEncoder
     {
+        /// <summary>
+        /// Encoding bytes to huffman algorithm.
+        /// </summary>
+        /// <param name="bytes"> Source bytes </param>
+        /// <returns> Encoded bytes </returns>
         public static byte[] Encode(byte[] bytes)
         {
             var dictionary = BytesCalculator.Calculate(bytes);
@@ -21,6 +26,11 @@ namespace Huffman
             return Merage(header, body);
         }
 
+        /// <summary>
+        /// Decoding of encoded bytes by Huffman algorithm.
+        /// </summary>
+        /// <param name="bytes"> Encoded bytes</param>
+        /// <returns> Decoded bytes</returns>
         public static byte[] Decode(byte[] bytes)
         {
             var result = DictionarySerializer.Deserialize(bytes);

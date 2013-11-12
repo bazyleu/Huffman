@@ -34,12 +34,14 @@ namespace Huffman.Console
 
         public static void Encode(string fileName)
         {
+            System.Console.WriteLine("working...");
             File.WriteAllBytes(fileName+".haf", HuffmanEncoder.Encode(File.ReadAllBytes(fileName)));
             System.Console.WriteLine("done.");
         }
 
         public static void Decode(string fileName)
         {
+            System.Console.WriteLine("working...");
             File.WriteAllBytes(fileName.Replace(".haf", String.Empty), HuffmanEncoder.Decode(File.ReadAllBytes(fileName)));
             System.Console.WriteLine("done.");
         }
