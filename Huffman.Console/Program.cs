@@ -35,21 +35,21 @@ namespace Huffman.Console
         public static void Encode(string fileName)
         {
             System.Console.WriteLine("working...");
-            File.WriteAllBytes(fileName+".haf", HuffmanEncoder.Encode(File.ReadAllBytes(fileName)));
+            File.WriteAllBytes(fileName+".huf", HuffmanEncoder.Encode(File.ReadAllBytes(fileName)));
             System.Console.WriteLine("done.");
         }
 
         public static void Decode(string fileName)
         {
             System.Console.WriteLine("working...");
-            File.WriteAllBytes(fileName.Replace(".haf", String.Empty), HuffmanEncoder.Decode(File.ReadAllBytes(fileName)));
+            File.WriteAllBytes(fileName.Replace(".huf", String.Empty), HuffmanEncoder.Decode(File.ReadAllBytes(fileName)));
             System.Console.WriteLine("done.");
         }
 
         private static string GetHelp()
         {
             return "[-e FILENAME] for encode file \n" +
-                   "[-d FILENAME] for decode *.haf file";
+                   "[-d FILENAME] for decode *.huf file";
         }
     }
 }
