@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Huffman.Bytes
 {
-    public static class DictionarySerializer
+    static class DictionarySerializer
     {
         public static byte[] Serialize(Dictionary<byte, long> dictionary)
         {

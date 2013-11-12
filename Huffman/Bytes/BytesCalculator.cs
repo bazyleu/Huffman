@@ -2,7 +2,7 @@
 
 namespace Huffman.Bytes
 {
-    public static class BytesCalculator
+    static class BytesCalculator
     {
         public static Dictionary<byte, long> Calculate(IEnumerable<byte> bytes)
         {

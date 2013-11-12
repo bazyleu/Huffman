@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Huffman.Tree
 {
-    public class TreeBuilderQueue
+    class TreeBuilderQueue
     {
         private IList<QueueItem> itemList;
 

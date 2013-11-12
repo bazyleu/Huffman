@@ -1,6 +1,5 @@
-﻿using System.Collections;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
 namespace Huffman.Tests

@@ -51,7 +51,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BitArrayUtilites.cs" />
-    <Compile Include="BitTableTests.cs" />
     <Compile Include="HuffmanEncoderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

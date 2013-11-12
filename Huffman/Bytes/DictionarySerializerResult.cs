@@ -2,7 +2,7 @@
 
 namespace Huffman.Bytes
 {
-    public class DictionarySerializerResult
+    class DictionarySerializerResult
     {
         public Dictionary<byte, long> Dictionary { get; set; }
         public int SizeOfBytes { get; set; }

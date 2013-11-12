@@ -1,7 +1,6 @@
-﻿
-namespace Huffman.Tree
+﻿namespace Huffman.Tree
 {
-    public class QueueItem
+    class QueueItem
     {
         public QueueItem(ITreeNode treeNode, long priority)
         {

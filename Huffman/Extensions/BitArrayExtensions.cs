@@ -2,7 +2,7 @@
 
 namespace Huffman.Extensions
 {
-    public static class BitArrayExtensions
+    static class BitArrayExtensions
     {
         public static BitArray CopyToNew(this BitArray bitArray, int startPosition)
         {

@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 
-using Huffman.Tree;
-
-namespace Huffman
+namespace Huffman.Tree
 {
-    public static class BitTable
+    static class BitTable
     {
         public static Dictionary<byte, BitArray> BuildTable(ITreeNode node)
         {

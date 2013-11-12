@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace Huffman.Tree
+﻿namespace Huffman.Tree
 {
-    public interface ITreeNode
+    interface ITreeNode
     {
         ITreeNode Left { get; set; }
         ITreeNode Rigth { get; set; }

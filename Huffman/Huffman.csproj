@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BitTable.cs" />
+    <Compile Include="Tree\BitTable.cs" />
     <Compile Include="Bytes\AppendBitResult.cs" />
     <Compile Include="Bytes\ByteBuilder.cs" />
     <Compile Include="Bytes\BytesCalculator.cs" />
