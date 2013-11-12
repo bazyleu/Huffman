@@ -19,7 +19,7 @@ byte[] sameWithSourceBytes = HuffmanEncoder.Decode(encodedBytes);
 
 ```
 
-If you want, you can use the consol application project which use huffman.dll for encoding/decoding files.
+If you want, you can use the console application project which use huffman.dll for encoding/decoding files.
 Use cmd for this...
 ```
 >Huffman.Console.exe
