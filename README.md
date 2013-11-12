@@ -24,13 +24,13 @@ Use cmd for this...
 ```
 >Huffman.Console.exe
 [-e FILENAME] for encode file
-[-d FILENAME] for decode *.haf file
+[-d FILENAME] for decode *.huf file
 
 >Huffman.Console.exe -e IMG_1278.JPG
 working...
 done.
 
->Huffman.Console.exe -d IMG_1278.JPG.haf
+>Huffman.Console.exe -d IMG_1278.JPG.huf
 working...
 done.
 ```
