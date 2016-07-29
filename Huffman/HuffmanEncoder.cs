@@ -23,7 +23,7 @@ namespace Huffman
             var body = Encode(bytes,
                 BitTable.BuildTable(TreeBuilder.BuildTree(new TreeBuilderQueue(dictionary))));
 
-            return Merage(header, body);
+            return Merge(header, body);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Huffman
                 TreeBuilder.BuildTree(new TreeBuilderQueue(result.Dictionary)));
         }
 
-        private static byte[] Merage(byte[] header, byte[] body)
+        private static byte[] Merge(byte[] header, byte[] body)
         {
             byte[] allBytes = new byte[header.Length + body.Length];
             Array.Copy(header, 0, allBytes, 0, header.Length);

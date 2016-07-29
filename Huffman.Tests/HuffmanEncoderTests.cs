@@ -8,9 +8,12 @@ namespace Huffman.Tests
     public class HuffmanEncoderTests
     {
         [TestMethod]
-        public void Test1()
+        public void MainTest()
         {
-            const string testString = "there are rrrr he he!";
+            const string testString = @"Aenean neque lorem, ultricies mollis nulla a,
+                                        sodales finibus libero. Morbi interdum augue quis turpis 
+                                        sagittis, nec elementum lectus pharetra. Pellentesque sagittis mi 
+                                        id justo tristique, quis sollicitudin orci luctus.";
             var bytes = BitArrayUtilites.GetBytes(testString);
             string startStr = Encoding.Unicode.GetString(bytes);
             var encode = HuffmanEncoder.Encode(bytes);
